@@ -18,9 +18,9 @@ int registro() //Função responsável por cadastrar os usuários no sistema
 	
 	strcpy(arquivo, cpf); //Responsável por copiar os valores das strings
 	
-	FILE * file; //Cria um novo arquivo no banco de dados
+	FILE *file; //Cria um novo arquivo no banco de dados
 	file = fopen(arquivo, "w"); //Criando o arquivo na pasta onde foi salvo o sistema
-	fprintf(file, cpf); //Salva o valor da variável 
+	fprintf(file,cpf); //Salva o valor da variável 
 	fclose(file); //Fecha o arquivo
 	
 	file = fopen(arquivo, "a"); //Para atualizar a informação do arquivo já criado
@@ -58,6 +58,7 @@ int registro() //Função responsável por cadastrar os usuários no sistema
 	
 	system("pause");
 }
+
 int consulta() //Função responsável por consultar as informações do usuário 
 {
 	setlocale(LC_ALL, "Portuguese");
@@ -68,7 +69,7 @@ int consulta() //Função responsável por consultar as informações do usuário
 	printf("Digite o CPF a ser consultado: "); //Consultando informação do usuário 
 	scanf("%s",cpf);
 	
-	FILE * file;
+	FILE *file;
 	file = fopen(cpf, "r"); //Para ler o arquivo
 	
 	if(file == NULL)
@@ -85,23 +86,25 @@ int consulta() //Função responsável por consultar as informações do usuário
 	
 	system("pause");	
 }
-int deletar() //Função responsável por deletar as informações do usuário
+
+int deletar()
 {
 	char cpf[40];
 	
-	printf("Digite o CPF do usuário a ser deletado: "); //Deletando as informações do usuário 
-	scanf("%s", cpf); //Salva o valor na varíavel
+	printf("Digite o CPF do usuário a ser deletado: \n");
+	scanf("%s", cpf);
 	
 	remove(cpf);
 	
 	FILE*file;
 	file = fopen(cpf, "r");
 	
-	if(file == NULL)
+	if(file == NULL);
 	{
-		printf("O usuário não se encontra no sistema! \n\n");
+		printf("O usuário não se encontra no sistema!\n\n");
 		system("pause");
 	}
+	
 }
 
 int main()
@@ -119,7 +122,8 @@ int main()
 		printf("Escola a opção desejada do menu:\n\n");
 		printf("\t1 - Registrar nomes\n");
 		printf("\t2 - Consultar nomes\n");
-		printf("\t3 - Deletar nomes\n\n");
+		printf("\t3 - Deletar nomes\n");
+		printf("\t4 - Sair do menu\n\n");
 		printf("Opção:"); //Fim do menu
 	
 		scanf("%d", &opcao); //Armazenando a escolha do usuário 
@@ -138,6 +142,11 @@ int main()
 			
 			case 3:
 			deletar();
+			break;
+			
+			case 4:
+			printf("Obrigado por utilizar o sistema!\n");
+			return 0;
 			break;
 						
 			default:
